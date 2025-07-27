@@ -7,8 +7,6 @@ const connectDatabase = async () => {
       serverSelectionTimeoutMS: 8000,
       socketTimeoutMS: 45000,
       connectTimeoutMS: 10000,
-      ssl: false, // 明確禁用 SSL
-      authSource: 'admin', // 指定認證資料庫
     });
 
     console.log("Connected to MongoDB database");

@@ -42,9 +42,9 @@ const reportSettingSchema = new mongoose.Schema<ReportSettingDocument>(
   }
 );
 
-const reportSettingModel = mongoose.model<ReportSettingDocument>(
+const ReportSettingModel = mongoose.model<ReportSettingDocument>(
   "ReportSetting",
   reportSettingSchema
 );
 
-export default reportSettingModel;
+export default ReportSettingModel;
