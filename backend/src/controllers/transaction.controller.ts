@@ -2,11 +2,13 @@ import { Request, Response } from "express";
 import { HTTPSTATUS } from "../config/http.config";
 import { asyncHandler } from "../middlewares/asyncHandler.middleware";
 import {
+  bulkDeleteTransactionSchema,
   createTransactionSchema,
   transactionIdSchema,
   updateTransactionSchema,
 } from "../validators/transaction.validator";
 import {
+  bulkDeleteTransactionService,
   createTransactionService,
   deleteTransactionService,
   duplicateTransactionService,
@@ -117,6 +119,20 @@ export const deleteTransactionController = asyncHandler(
 
     return res.status(HTTPSTATUS.OK).json({
       message: "Transaction deleted successfully",
+    });
+  }
+);
+
+export const bulkDeleteTransactionController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.user?._id;
+    const { transactionIds } = bulkDeleteTransactionSchema.parse(req.body);
+
+    const result = await bulkDeleteTransactionService(userId, transactionIds);
+
+    return res.status(HTTPSTATUS.OK).json({
+      message: "Transaction deleted successfully",
+      ...result,
     });
   }
 );

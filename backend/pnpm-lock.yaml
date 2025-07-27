@@ -102,6 +102,9 @@ importers:
       '@types/passport-jwt':
         specifier: ^4.0.1
         version: 4.0.1
+      prettier:
+        specifier: ^3.6.2
+        version: 3.6.2
       ts-node-dev:
         specifier: ^2.0.0
         version: 2.0.0(@types/node@22.16.5)(typescript@5.8.3)

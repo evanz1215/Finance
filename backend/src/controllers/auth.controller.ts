@@ -21,9 +21,8 @@ export const loginController = asyncHandler(
   async (req: Request, res: Response) => {
     const body = loginSchema.parse({ ...req.body });
 
-    const { user, accessToken, expiresAt, reportSetting } = await loginService(
-      body
-    );
+    const { user, accessToken, expiresAt, reportSetting } =
+      await loginService(body);
 
     return res.status(HTTPSTATUS.OK).json({
       message: "User logged in successfully",

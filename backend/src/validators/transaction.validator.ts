@@ -43,8 +43,17 @@ export const baseTransactionSchema = z.object({
     .default(PaymentMethodEnum.CASH),
 });
 
+export const bulkDeleteTransactionSchema = z.object({
+  transactionIds: z
+    .array(z.string().length(24, "Invalid transaction ID format"))
+    .min(1, "At least one transaction ID must be provided"),
+});
 export const createTransactionSchema = baseTransactionSchema;
 export const updateTransactionSchema = baseTransactionSchema.partial();
 
 export type CreateTransactionType = z.infer<typeof createTransactionSchema>;
 export type UpdateTransactionType = z.infer<typeof updateTransactionSchema>;
+
+export type BulkDeleteTransactionType = z.infer<
+  typeof bulkDeleteTransactionSchema
+>;
